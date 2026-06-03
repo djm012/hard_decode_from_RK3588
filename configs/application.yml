@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: wvp
+  profiles:
+    active: 274-dev
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/wvp?useUnicode=true&characterEncoding=UTF8&rewriteBatchedStatements=true&serverTimezone=PRC&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 12345678
+
+server:
+  port: 18080
+sip:
+  # [可选] 28181服务监听的端口
+  port: 5060
+  # 根据国标6.1.2中规定，domain宜采用ID统一编码的前十位编码。国标附录D中定义前8位为中心编码（由省级、市级、区级、基层编号组成，参照GB/T 2260-2007）
+  # 后两位为行业编码，定义参照附录D.3
+  # 3701020049标识山东济南历下区 信息行业接入
+  # [可选]
+  domain: 3402000000
+  # [可选]
+  id: 34020000002000000001
+  # [可选] 默认设备认证密码，后续扩展使用设备单独密码, 移除密码将不进行校验
+  password: 12345678
+  authentication: false
+
+#zlm 默认服务器配置
+media:
+  id: zlmediakit-local
+  # [必须修改] zlm服务器的内网IP
+  ip: 172.10.50.34
+  # [必须修改] zlm服务器的http.port
+  http-port: 9092
+  authentication: false
+  # [必选选] zlm服务器的hook.admin_params=secret
+  secret: TWSYFgYJOQWB4ftgeYut8DW4wbs7pQnj
+  # 启用多端口模式, 多端口模式使用端口区分每路流，兼容性更好。 单端口使用流的ssrc区分， 点播超时建议使用多端口测试
+  rtp:
+    # [可选] 是否启用多端口模式, 开启后会在portRange范围内选择端口用于媒体流传输
+    enable: true
+    # [可选] 在此范围内选择端口用于媒体流传输, 必须提前在zlm上配置该属性，不然自动配置此属性可能不成功
+    port-range: 40000,45000 # 端口范围
+    # [可选] 国标级联在此范围内选择端口发送媒体流,
+    send-port-range: 50000,55000 # 端口范围
+
