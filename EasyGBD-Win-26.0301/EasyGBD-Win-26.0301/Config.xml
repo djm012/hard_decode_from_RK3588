@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<XmlConfig>
+    <SipType>0</SipType>
+    <serverSipID>34020000002000000001</serverSipID>
+    <serverDomain>3402000000</serverDomain>
+    <serverIP>172.10.50.34</serverIP>
+    <serverSipPort>5060</serverSipPort>
+    <registerExpire>3600</registerExpire>
+    <heartbeatCount>3</heartbeatCount>
+    <heartbeatInterval>60</heartbeatInterval>
+    <protocol>UDP</protocol>
+    <password>12345678</password>
+    <localSipID>34020000001110000001</localSipID>
+    <localPort>15060</localPort>
+    <deviceName>EasyGBD-win-683031</deviceName>
+    <sourcePath>rtsp://127.0.0.1:554/EasyDarwin.mp4</sourcePath>
+    <Channels>
+        <cid>34020000001310000001</cid>
+    </Channels>
+</XmlConfig>

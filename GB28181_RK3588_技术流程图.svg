@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="920" viewBox="0 0 1500 920">
+  <defs>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .title { font: 700 34px "Microsoft YaHei", "SimHei", sans-serif; fill: #123047; }
+      .subtitle { font: 20px "Microsoft YaHei", "SimHei", sans-serif; fill: #526579; }
+      .lane-title { font: 700 22px "Microsoft YaHei", "SimHei", sans-serif; fill: #17324d; }
+      .box-title { font: 700 20px "Microsoft YaHei", "SimHei", sans-serif; fill: #102a43; }
+      .box-text { font: 16px "Microsoft YaHei", "SimHei", sans-serif; fill: #31465a; }
+      .small { font: 15px "Microsoft YaHei", "SimHei", sans-serif; fill: #41576b; }
+      .note-title { font: 700 18px "Microsoft YaHei", "SimHei", sans-serif; fill: #0f5132; }
+      .note-text { font: 16px "Microsoft YaHei", "SimHei", sans-serif; fill: #1f5f45; }
+      .lane { fill: #ffffff; stroke: #d7e0ea; stroke-width: 2; rx: 18; }
+      .box { fill: #ffffff; stroke: #8fb4d8; stroke-width: 2.2; rx: 14; }
+      .box-gb { fill: #eef7ff; stroke: #5596d1; }
+      .box-wvp { fill: #f0f7f1; stroke: #52a66d; }
+      .box-zlm { fill: #fff7e8; stroke: #d69333; }
+      .box-rk { fill: #f4f0ff; stroke: #7d62c8; }
+      .result { fill: #eaf8ef; stroke: #2d9b5f; stroke-width: 2.5; rx: 16; }
+      .arrow { stroke: #51677c; stroke-width: 2.6; fill: none; marker-end: url(#arrow); }
+      .arrow2 { stroke: #2d6f9f; stroke-width: 2.6; fill: none; marker-end: url(#arrow-blue); }
+      .dash { stroke-dasharray: 8 7; }
+      .tag { fill: #e9eef4; stroke: #c7d2df; rx: 10; }
+      .tag-text { font: 700 15px "Microsoft YaHei", "SimHei", sans-serif; fill: #2e455a; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#51677c"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d6f9f"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1500" height="920"/>
+  <text class="title" x="750" y="58" text-anchor="middle">GB28181 国标流转 H.264/H.265 与 RK3588 硬解码技术流程图</text>
+  <text class="subtitle" x="750" y="92" text-anchor="middle">GB28181 设备接入 → WVP 信令控制 → RK3588 上的 ZLMediaKit 转 RTSP → 同板 GStreamer + Rockchip MPP 硬解码 → 55-56fps</text>
+
+  <rect class="lane" x="55" y="135" width="300" height="640"/>
+  <rect class="lane" x="400" y="135" width="300" height="640"/>
+  <rect class="lane" x="745" y="135" width="300" height="640"/>
+  <rect class="lane" x="1090" y="135" width="355" height="640"/>
+
+  <text class="lane-title" x="205" y="175" text-anchor="middle">GB28181 设备侧</text>
+  <text class="lane-title" x="550" y="175" text-anchor="middle">WVP 平台</text>
+  <text class="lane-title" x="895" y="175" text-anchor="middle">RK3588：ZLMediaKit</text>
+  <text class="lane-title" x="1268" y="175" text-anchor="middle">RK3588：硬解码程序</text>
+
+  <rect class="box box-gb" x="88" y="215" width="234" height="115"/>
+  <text class="box-title" x="205" y="250" text-anchor="middle">EasyGBD / 国标设备</text>
+  <text class="box-text" x="205" y="280" text-anchor="middle">配置 SIP 地址、5060 端口</text>
+  <text class="box-text" x="205" y="305" text-anchor="middle">设备 ID、通道 ID、视频源</text>
+
+  <rect class="box box-gb" x="88" y="395" width="234" height="120"/>
+  <text class="box-title" x="205" y="430" text-anchor="middle">RTP/PS 推流</text>
+  <text class="box-text" x="205" y="460" text-anchor="middle">GB28181 媒体层</text>
+  <text class="box-text" x="205" y="486" text-anchor="middle">RTP 承载 PS 封装</text>
+
+  <rect class="box box-wvp" x="433" y="215" width="234" height="115"/>
+  <text class="box-title" x="550" y="250" text-anchor="middle">SIP 注册与鉴权</text>
+  <text class="box-text" x="550" y="280" text-anchor="middle">REGISTER / 认证挑战</text>
+  <text class="box-text" x="550" y="305" text-anchor="middle">设备与通道上线</text>
+
+  <rect class="box box-wvp" x="433" y="395" width="234" height="120"/>
+  <text class="box-title" x="550" y="430" text-anchor="middle">点播与媒体协商</text>
+  <text class="box-text" x="550" y="460" text-anchor="middle">Invite 触发设备推流</text>
+  <text class="box-text" x="550" y="486" text-anchor="middle">通知 ZLM 开启 RTP 端口</text>
+
+  <rect class="box box-zlm" x="778" y="215" width="234" height="115"/>
+  <text class="box-title" x="895" y="250" text-anchor="middle">板端 RTP 接收</text>
+  <text class="box-text" x="895" y="280" text-anchor="middle">监听指定端口</text>
+  <text class="box-text" x="895" y="305" text-anchor="middle">按序列号/时间戳重组</text>
+
+  <rect class="box box-zlm" x="778" y="395" width="234" height="120"/>
+  <text class="box-title" x="895" y="430" text-anchor="middle">PS 解析与码流提取</text>
+  <text class="box-text" x="895" y="460" text-anchor="middle">解析 PES / ES Payload</text>
+  <text class="box-text" x="895" y="486" text-anchor="middle">提取 H.264 / H.265 NAL</text>
+
+  <rect class="box box-zlm" x="778" y="575" width="234" height="115"/>
+  <text class="box-title" x="895" y="610" text-anchor="middle">本机标准协议封装</text>
+  <text class="box-text" x="895" y="640" text-anchor="middle">输出 RTSP 地址</text>
+  <text class="box-text" x="895" y="665" text-anchor="middle">保留 SPS/PPS/VPS 参数集</text>
+
+  <rect class="box box-rk" x="1122" y="215" width="290" height="115"/>
+  <text class="box-title" x="1267" y="250" text-anchor="middle">GStreamer 拉流</text>
+  <text class="box-text" x="1267" y="280" text-anchor="middle">rtspsrc location=rtsp://...</text>
+  <text class="box-text" x="1267" y="305" text-anchor="middle">从本机 ZLM 获取标准 RTSP 流</text>
+
+  <rect class="box box-rk" x="1122" y="395" width="290" height="120"/>
+  <text class="box-title" x="1267" y="430" text-anchor="middle">解包与码流解析</text>
+  <text class="box-text" x="1267" y="460" text-anchor="middle">rtph264depay / rtph265depay</text>
+  <text class="box-text" x="1267" y="486" text-anchor="middle">h264parse / h265parse</text>
+
+  <rect class="box box-rk" x="1122" y="575" width="290" height="120"/>
+  <text class="box-title" x="1267" y="610" text-anchor="middle">Rockchip MPP 硬解码</text>
+  <text class="box-text" x="1267" y="640" text-anchor="middle">mppvideodec / rkmppvideodec</text>
+  <text class="box-text" x="1267" y="666" text-anchor="middle">VPU 输出 NV12 / YUV 帧</text>
+
+  <rect class="result" x="1068" y="810" width="390" height="75"/>
+  <text class="note-title" x="1263" y="840" text-anchor="middle">最终成果：RK3588 稳定硬解码 55-56fps</text>
+  <text class="note-text" x="1263" y="867" text-anchor="middle">RK3588 同时运行 ZLM 和硬解码程序，60fps 输入流下统计真实硬解码吞吐</text>
+
+  <rect class="tag" x="74" y="805" width="390" height="78"/>
+  <text class="tag-text" x="269" y="835" text-anchor="middle">关键部署：ZLMediaKit 运行在 RK3588 板端</text>
+  <text class="small" x="269" y="862" text-anchor="middle">RK3588 先接收/转换国标流，再通过 VPU 硬解码本机 RTSP 流</text>
+
+  <path class="arrow" d="M 322 272 C 360 272, 390 272, 432 272"/>
+  <path class="arrow" d="M 550 330 C 550 354, 550 371, 550 394"/>
+  <path class="arrow" d="M 667 455 C 704 455, 736 455, 777 455"/>
+  <path class="arrow" d="M 895 330 C 895 354, 895 371, 895 394"/>
+  <path class="arrow" d="M 895 515 C 895 540, 895 552, 895 574"/>
+  <path class="arrow2" d="M 1012 633 C 1052 633, 1080 272, 1121 272"/>
+  <path class="arrow" d="M 1267 330 C 1267 354, 1267 371, 1267 394"/>
+  <path class="arrow" d="M 1267 515 C 1267 540, 1267 552, 1267 574"/>
+  <path class="arrow" d="M 1267 695 C 1267 736, 1265 770, 1264 809"/>
+  <path class="arrow dash" d="M 205 330 C 205 354, 205 371, 205 394"/>
+  <path class="arrow dash" d="M 322 455 C 360 455, 390 455, 432 455"/>
+  <path class="arrow dash" d="M 433 272 C 392 325, 365 388, 322 455"/>
+
+  <text class="small" x="373" y="250" text-anchor="middle">SIP REGISTER</text>
+  <text class="small" x="719" y="436" text-anchor="middle">RTP 端口协商</text>
+  <text class="small" x="1068" y="410" text-anchor="middle">本机 RTSP URL</text>
+  <text class="small" x="354" y="434" text-anchor="middle">RTP/PS</text>
+
+  <rect x="72" y="700" width="910" height="52" rx="14" fill="#ffffff" stroke="#d7e0ea"/>
+  <text class="small" x="527" y="723" text-anchor="middle">RK3588 端核心代码管线：rtspsrc → rtph264depay/rtph265depay → h264parse/h265parse → mppvideodec/rkmppvideodec → appsink/fakesink</text>
+  <text class="small" x="527" y="746" text-anchor="middle">ZLM 在 RK3588 上完成国标流接收与 RTSP 封装；硬解码输出 NV12/YUV 帧，主解码由 VPU 完成</text>
+</svg>
