@@ -1,4 +1,4 @@
-﻿# RK3588 + WVP + EasyGBD 极简步骤
+﻿# RK3588 + WVP + EasyGBD 步骤
 
 ## 1. RK3588 先启动服务
 
