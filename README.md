@@ -25,7 +25,7 @@ http://172.10.50.34:18080
 注意：
 
 - WVP 实际配置看 `wvp-GB28181-pro/target/application.yml`
-- 如果里面的 `media.ip` 还是 `172.10.15.24`，但你板子的实际 IP 已经是 `172.10.50.34`，先改成当前板子 IP 再启动
+- 配置中改成板子上的ip
 - ZLM 实际配置看 `ZLMediaKit/release/linux/Debug/config.ini`
 
 ## 2. Windows 先把视频变成 RTSP
@@ -90,7 +90,7 @@ EasyRTSPServer_Demo.exe
 
 ## 5. 从 WVP 复制 RTSP 地址
 
-双路时你当前已经拿到：
+双路时当前已经拿到：
 
 ```text
 rtsp://172.10.50.34:554/rtp/34020000001110000001_34020000001310000001?originTypeStr=rtp_push
@@ -108,13 +108,13 @@ ffplay "你的RTSP地址"
 再测 GStreamer 硬解码：
 
 ```bash
-gst-launch-1.0 rtspsrc location="你的RTSP地址" latency=100 ! rtph264depay ! h264parse ! mppvideodec ! fakesink sync=false
+gst-launch-1.0 rtspsrc location="RTSP地址" latency=100 ! rtph264depay ! h264parse ! mppvideodec ! fakesink sync=false
 ```
 
 再测 Python 脚本：
 
 ```bash
-python3 rkmpp_video_player_optimized.py "你的RTSP地址"
+python3 rkmpp_video_player_optimized.py "RTSP地址"
 ```
 
 双路两种方式：
